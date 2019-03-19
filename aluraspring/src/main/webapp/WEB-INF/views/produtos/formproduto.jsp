@@ -1,29 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <title>Cadastro de Produto</title>
 </head>
 <body>
-
-	<form action="/aluraspring/produtos" method="post">
-		<div>
-			<div><label>Título</label></div>
-			<input type="text" name="titulo"/>
-		</div>
-		<div>
-			<div><label>Descrição</label></div>
-			<textarea rows="10" cols="20" name="descricao"></textarea>
-		</div>
-		<div>
-			<div><label>Páginas</label></div>
-			<input type="text" name="paginas"/>
-		</div>
-		<button type="submit">Cadastrar</button>
+	<div class="container">
+		<h2>Cadastre um Novo Produto</h2>
+		<form:form action="/aluraspring/produtos" method="post" commandName="produto" enctype="multipart/form-data">
+			<div class="form-group">
+				<div><label>TÃ­tulo</label></div>
+				<form:errors path="titulo" />
+				<form:input path="titulo"  cssClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<div><label>DescriÃ§Ã£o</label></div>
+				<form:errors path="descricao" />
+				<form:textarea rows="10" cols="20" path="descricao" cssClass="form-control" />
+			</div>
+			<div class="form-group">
+				<div><label>PÃ¡ginas</label></div>
+				<form:errors path="paginas" />
+				<form:input path="paginas" cssClass="form-control"/>
+			</div>
+			<c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
+				<div class="form-group">
+					<label>${tipoPreco}</label>			
+					<form:input path="precos[${status.index}].valor" cssClass="form-control" />
+					<form:hidden path="precos[${status.index}].tipo"  value="${tipoPreco}" />
+				</div>			
+			</c:forEach>	
+			<div>
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</div>			
+		</form:form>	
+		<p/>	
+		<form action="/aluraspring">
+			<button type="submit" class="btn btn-primary">Voltar</button>
+		</form>
+	</div>	
 	
-	</form>
-
+	
 </body>
 </html>

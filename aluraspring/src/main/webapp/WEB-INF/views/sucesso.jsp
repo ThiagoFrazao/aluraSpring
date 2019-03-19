@@ -5,24 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<title>Curso Alura Spring MVC</title>
+<title>Operação Realizada com Sucesso</title>
 </head>
 <body>
 	<div class="container">
-		<h1>Pagina Inicial Teste</h1>
-	
-		<h3>Produto</h3>
-		<div class="form-group">
-			<form action="produtos/formproduto">
-				<button type="submit" class="btn btn-primary">Cadastrar Novo Produto</button>
-			</form>
-		</div>			
-		<div class="form-group">
-			<form action="produtos/listaprodutos">
-				<button type="submit" class="btn btn-primary">Lista de Produtos Cadastrados</button>
-			</form>
-		</div>	
+		<h2>Operação realiazada com sucesso.</h2>
+		<p/>
+		<form action="/aluraspring">
+			<button type="submit" class="btn btn-primary">Home</button>
+		</form>
 	</div>
-
 </body>
 </html>
